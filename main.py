@@ -24,6 +24,13 @@ class Jeu:
         Example
         -------
         >>> jeu = Jeu(10)
+        0 <= m <=10
 
         """
         self.k = rd.randint(0, m)
+
+
+if __name__ == '__main__':  
+    import doctest
+    doctest.testmod()
+   
