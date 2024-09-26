@@ -73,6 +73,7 @@ class Jeu:
         n = 0
         while n < self.n:
             try:
+                print("il vous reste ", self.n - n , " essais")
                 k = int(input('Entre un nombre : '))
                 if self.test(k):
                     break
