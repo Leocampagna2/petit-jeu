@@ -72,10 +72,13 @@ class Jeu:
         """
         n = 0
         while n < self.n:
-            k = int(input('Entre un nombre : '))
-            if self.test(k):
-                break
-            n += 1
+            try:
+                k = int(input('Entre un nombre : '))
+                if self.test(k):
+                    break
+                n += 1
+            except ValueError:
+                print("Ceci n'est pas un entier")
         else:
             print("Désolé, tu as épuisé tous tes essais.")
 
