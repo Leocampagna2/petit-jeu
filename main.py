@@ -6,27 +6,22 @@ class Jeu:
 
     Parameters
     ----------
-    m : INT -> nombre maximum à choisir
     n : INT -> nombre d'essais maximum
     """
 
-    def __init__(self, m, n):
+    def __init__(self, n):
         """
         Initialise un jeu avec un nombre à deviner aléatoire et un nombre d'essais.
 
         Parameters
         ----------
-        m : INT -> nombre max à choisir 
         n : INT -> nombre d'essais
-
-        Returns
-        -------
-        None
 
         Example
         -------
-        >>> jeu = Jeu(10, 4)
+        >>> jeu = Jeu(4)
         """
+        m = int(input("Donne moi le maximum du nombre que tu veux deviner : "))    
         self.k = rd.randint(0, m)
         self.n = n
 
@@ -44,7 +39,7 @@ class Jeu:
 
         Example
         -------
-        >>> jeu = Jeu(10, 4)
+        >>> jeu = Jeu(4)
         >>> jeu.k = 5
         >>> jeu.test(6)
         Trop Grand
@@ -73,7 +68,7 @@ class Jeu:
         n = 0
         while n < self.n:
             try:
-                print("il vous reste ", self.n - n , " essais")
+                print(f"Il vous reste {self.n - n} essais.")
                 k = int(input('Entre un nombre : '))
                 if self.test(k):
                     break
@@ -87,5 +82,5 @@ class Jeu:
 if __name__ == '__main__':  
     import doctest
     doctest.testmod()
-    jeu = Jeu(10, 4)
+    jeu = Jeu(4)
     jeu.jouer()
