@@ -2,49 +2,49 @@ import random as rd
 
 class Jeu:
     """
+    Classe représentant un jeu de devinette.
+
     Parameters
     ----------
-    elle sert à activer le jeu
-
+    m : INT -> nombre maximum à choisir
+    n : INT -> nombre d'essais maximum
     """
 
-    def __init__(self, m):
+    def __init__(self, m, n):
         """
-       
+        Initialise un jeu avec un nombre à deviner aléatoire et un nombre d'essais.
 
         Parameters
         ----------
-        m : INT
-            DESCRIPTION.
+        m : INT -> nombre max à choisir 
+        n : INT -> nombre d'essais
 
         Returns
         -------
-        None.
+        None
 
         Example
         -------
-        >>> jeu = Jeu(10)
-
+        >>> jeu = Jeu(10, 4)
         """
         self.k = rd.randint(0, m)
-
+        self.n = n
 
     def test(self, k):
         """
-        Compare le nombre deviné  avec le nombre à deviner
-       
+        Compare le nombre deviné avec le nombre à deviner.
 
         Parameters
         ----------
         k : INT
 
-        Returns*
-        --------
-        booléen: True si les nombres sont égaux et False dans le cas contraire
+        Returns
+        -------
+        booléen: True si les nombres sont égaux, False sinon
 
         Example
         -------
-        >>> jeu = Jeu(10)
+        >>> jeu = Jeu(10, 4)
         >>> jeu.k = 5
         >>> jeu.test(6)
         Trop Grand
@@ -55,31 +55,33 @@ class Jeu:
         >>> jeu.test(5)
         Tu as gagné
         True
-
         """
         if k != self.k:        
             if k < self.k:
                 print('Trop Petit')
-                return False
             if k > self.k:
                print("Trop Grand")
-               return False
-        print("Tu as gagné")
-        return True
+            return False
+        else:
+            print("Tu as gagné")
+            return True
     
     def jouer(self):
         """
-        Lancer le jeu
+        Lance le jeu en permettant au joueur de deviner jusqu'à ce qu'il gagne ou qu'il atteigne le nombre d'essais maximum.
         """
-        k = 0
-        while k != self.k:
-           k = int(input('entre un nombre : '))
-           self.test(k)
+        n = 0
+        while n < self.n:
+            k = int(input('Entre un nombre : '))
+            if self.test(k):
+                break
+            n += 1
+        else:
+            print("Désolé, tu as épuisé tous tes essais.")
 
 
 if __name__ == '__main__':  
     import doctest
     doctest.testmod()
-    jeu = Jeu(10)
+    jeu = Jeu(10, 4)
     jeu.jouer()
-
