@@ -66,11 +66,20 @@ class Jeu:
                return False
         print("Tu as gagné")
         return True
+    
+    def jouer(self):
+        """
+        Lancer le jeu
+        """
+        k = 0
+        while k != self.k:
+           k = int(input('entre un nombre : '))
+           self.test(k)
 
 
 if __name__ == '__main__':  
     import doctest
     doctest.testmod()
     jeu = Jeu(10)
-    jeu.test(4)
+    jeu.jouer()
 
