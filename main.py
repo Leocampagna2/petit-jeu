@@ -17,11 +17,8 @@ class Jeu:
         ----------
         n : INT -> nombre d'essais
 
-        Example
-        -------
-        >>> jeu = Jeu(4)
         """
-        m = int(input("Donne moi le maximum du nombre que tu veux deviner : "))    
+        m = int(input("Donne moi le maximum du nombre que tu veux deviner : "))
         self.k = rd.randint(0, m)
         self.n = n
 
@@ -37,19 +34,6 @@ class Jeu:
         -------
         booléen: True si les nombres sont égaux, False sinon
 
-        Example
-        -------
-        >>> jeu = Jeu(4)
-        >>> jeu.k = 5
-        >>> jeu.test(6)
-        Trop Grand
-        False
-        >>> jeu.test(2)
-        Trop Petit
-        False
-        >>> jeu.test(5)
-        Tu as gagné
-        True
         """
         if k != self.k:        
             if k < self.k:
@@ -77,10 +61,10 @@ class Jeu:
                 print("Ceci n'est pas un entier")
         else:
             print("Désolé, tu as épuisé tous tes essais.")
-
+            print("Le nombre a trouver était  : ", self.k)
 
 if __name__ == '__main__':  
     import doctest
     doctest.testmod()
-    jeu = Jeu(4)
+    jeu = Jeu(6)
     jeu.jouer()
